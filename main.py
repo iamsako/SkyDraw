@@ -20,9 +20,9 @@ LMBWasReleased = TRUE
 # Get data from config.ini
 config = configparser.ConfigParser(allow_no_value=True)
 config.read("config.ini")
-handle = config["Login"]["bsky_handle"]
-password = config["Login"]["app_password"]
-configLang = config["Misc"]["language"]
+handle = (config["Login"]["bsky_handle"].encode('ascii', 'ignore')).decode("utf-8")
+password = (config["Login"]["app_password"].encode('ascii', 'ignore')).decode("utf-8")
+configLang = (config["Misc"]["language"].encode('ascii', 'ignore')).decode("utf-8")
 
 if configLang == "":
     langs = ['en', 'ja']
